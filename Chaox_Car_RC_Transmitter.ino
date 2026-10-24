@@ -33,4 +33,18 @@ void setup() {
   Serial.println("Setup complete");
 }
 void loop() {
+  trData.packetId++; //increment packet id
+  Serial.print("Transmitting packet: ");
+  Serial.print(trData.packetId);
+  Serial.println("Containing: ");
+  Serial.print("X-axis value: ");
+  Serial.println(trData.X_axis);
+  Serial.print("Y-axis value: ");
+  Serial.println(trData.Y_axis);
+  if (tr.write(&trData, sizeof(Payload))) {
+    Serial.println("Transmitted succesfully");
+  } else {
+    Serial.println("Transmission failed, car maybe out of range...");
+  }
+  delay(50); //For stability
 }
