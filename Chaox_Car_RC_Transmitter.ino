@@ -4,8 +4,8 @@
 
 #define CE_PIN 9
 #define CSN_PIN 10
-#define LEFT_JOY_Y A1   // Left Joystick VRy (Forward/Backward)
-#define RIGHT_JOY_X A2  // Right Joystick VRx (Left/Right)
+#define LEFT_JOY_Y A0   // Left Joystick VRy (Forward/Backward)
+#define RIGHT_JOY_X A3  // Right Joystick VRx (Left/Right)
 #define DEADZONE 15     //Deadzone where the joystick is considered at center
 
 RF24 tr(CE_PIN, CSN_PIN);
