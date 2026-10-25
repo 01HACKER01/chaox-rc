@@ -1,14 +1,21 @@
 #include <SPI.h>
 #include <nRF24L01.h>
 #include <RF24.h>
-
+#include <Servo.h>
+//Pin definations
 #define CE_PIN 9
 #define CSN_PIN 10
-#define ENA 5  // PWM Speed Pin
-#define IN1 2  // Direction Pin
-#define IN2 3  // Direction Pin
+#define ENA 5        // PWM Speed Pin
+#define IN1 2        // Direction Pin
+#define IN2 3        // Direction Pin
+#define SERVO_PIN 8  // Servo Pin
+//Servo stuff
+#define SERVO_CENTER 90  // Standard center position(degree)
+#define SERVO_MIN 0      // Left turn physical limit(degree)
+#define SERVO_MAX 180    // Right turn physical limit(degree)
 
 RF24 rc(CE_PIN, CSN_PIN);
+Servo servo;
 
 const uint64_t pipeAddress = 0xE8E8F0F0E1LL;  //Address for messages
 struct Payload {
@@ -43,20 +50,23 @@ void setup() {
   digitalWrite(IN1, LOW);
   digitalWrite(IN2, LOW);
   analogWrite(ENA, 0);
+  //Servo Setup
+  servo.attach(SERVO_PIN);
+  servo.write(SERVO_CENTER);  // Set wheels at centre on boot
   Serial.println("Setup Complete");
   Serial.println("Receiver Listening...");
 }
 
 void loop() {
-  nRF_Get();
-  Move(RcData.Y_axis);
+  nRF_Get();             //This function checks and recieves messages
+  Move(RcData.Y_axis);   //Moves the motors forward/backward
+  Steer(RcData.X_axis);  //Steers the car
 }
 
 void nRF_Get() {
   if (rc.available()) {
     rc.read(&RcData, sizeof(Payload));
     lastReceiveTime = millis();  // Reset timer to show message came
-
     // Print message
     Serial.println("Message Recieved! Details: ");
     Serial.print("ID: ");
@@ -79,7 +89,7 @@ void Move(int16_t thr) {
     digitalWrite(IN1, HIGH);
     digitalWrite(IN2, LOW);
     analogWrite(ENA, thr);
-  } else if (thr < 0) { //backward
+  } else if (thr < 0) {  //backward
     digitalWrite(IN1, LOW);
     digitalWrite(IN2, HIGH);
     analogWrite(ENA, abs(thr));
@@ -88,4 +98,9 @@ void Move(int16_t thr) {
     digitalWrite(IN2, LOW);
     analogWrite(ENA, 0);
   }
+}
+
+void Steer(int16_t steer_input) {
+  int servoAngle = map(steer_input, -255, 255, SERVO_MIN, SERVO_MAX);//Calculate servo position based on limits
+  servo.write(servoAngle);
 }
