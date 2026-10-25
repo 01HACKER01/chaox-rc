@@ -1,6 +1,7 @@
 #include <SPI.h>
 #include <nRF24L01.h>
 #include <RF24.h>
+#include <avr/wdt.h> //Watchdog
 
 #define CE_PIN 9
 #define CSN_PIN 10
@@ -33,10 +34,12 @@ void setup() {
   tr.setChannel(76);                //idk why i chose this...
   tr.openWritingPipe(pipeAddress);  //connect to reciever
   tr.stopListening();               //make module transmit only
+  wdt_enable(WDTO_4S); //Start Watchdog woooooof!
   Serial.println("Setup complete");
 }
 void loop() {
   trData.packetId++;  //increment packet id
+  wdt_reset(); //Feed watchdog to keep it full and happy Yippee!
   //Get joystick values
   int Raw_FB = analogRead(LEFT_JOY_Y);   //Forward/Back Value
   int Raw_LR = analogRead(RIGHT_JOY_X);  //Left/Right Value
@@ -68,5 +71,5 @@ void loop() {
   } else {
     Serial.println("Transmission failed, car maybe out of range...");
   }
-  delay(50);  //For stability
+  delay(50);  //For stability i guess
 }
