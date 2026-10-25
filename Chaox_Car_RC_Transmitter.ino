@@ -24,6 +24,7 @@ Payload trData;
 void setup() {
   wdt_disable();
   Serial.begin(115200);
+    wdt_enable(WDTO_4S);  //Start Watchdog woooooof!
   Serial.println("Initialize nRF");
   if (!tr.begin()) {
     Serial.println("nRF connection failed!!!");
@@ -35,7 +36,6 @@ void setup() {
   tr.setChannel(76);                //idk why i chose this...
   tr.openWritingPipe(pipeAddress);  //connect to reciever
   tr.stopListening();               //make module transmit only
-  wdt_enable(WDTO_4S);              //Start Watchdog woooooof!
   Serial.println("Setup complete");
 }
 void loop() {
