@@ -28,8 +28,9 @@ Payload RcData;
 unsigned long lastReceiveTime = 0;
 
 void setup() {
-  Serial.begin(115200);
   wdt_disable();
+  Serial.begin(115200);
+  wdt_enable(WDTO_4S);  //Start Watchdog woooooof!
   // Initialize nRF Module
   Serial.println("Setup Starting");
   Serial.println("nRF Setup Start");
@@ -55,8 +56,6 @@ void setup() {
   //Servo Setup
   servo.attach(SERVO_PIN);
   servo.write(SERVO_CENTER);  // Set wheels at centre on boot
-  //Watchdog
-  wdt_enable(WDTO_4S);  //4sec
   Serial.println("Setup Complete");
   Serial.println("Receiver Listening...");
 }
