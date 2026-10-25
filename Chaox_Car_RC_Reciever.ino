@@ -29,6 +29,7 @@ unsigned long lastReceiveTime = 0;
 
 void setup() {
   Serial.begin(115200);
+  wdt_disable();
   // Initialize nRF Module
   Serial.println("Setup Starting");
   Serial.println("nRF Setup Start");
@@ -55,7 +56,7 @@ void setup() {
   servo.attach(SERVO_PIN);
   servo.write(SERVO_CENTER);  // Set wheels at centre on boot
   //Watchdog
-  wdt_enable(WDTO_4S);//4sec
+  wdt_enable(WDTO_4S);  //4sec
   Serial.println("Setup Complete");
   Serial.println("Receiver Listening...");
 }
@@ -105,6 +106,6 @@ void Move(int16_t thr) {
 }
 
 void Steer(int16_t steer_input) {
-  int servoAngle = map(steer_input, -255, 255, SERVO_MIN, SERVO_MAX);//Calculate servo position based on limits
+  int servoAngle = map(steer_input, -255, 255, SERVO_MIN, SERVO_MAX);  //Calculate servo position based on limits
   servo.write(servoAngle);
 }
