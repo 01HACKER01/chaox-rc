@@ -2,6 +2,7 @@
 #include <nRF24L01.h>
 #include <RF24.h>
 #include <Servo.h>
+#include <avr/wdt.h>
 //Pin definations
 #define CE_PIN 9
 #define CSN_PIN 10
@@ -53,11 +54,14 @@ void setup() {
   //Servo Setup
   servo.attach(SERVO_PIN);
   servo.write(SERVO_CENTER);  // Set wheels at centre on boot
+  //Watchdog
+  wdt_enable(WDTO_4S);//4sec
   Serial.println("Setup Complete");
   Serial.println("Receiver Listening...");
 }
 
 void loop() {
+  wdt_reset();           //feed the dog
   nRF_Get();             //This function checks and recieves messages
   Move(RcData.Y_axis);   //Moves the motors forward/backward
   Steer(RcData.X_axis);  //Steers the car
