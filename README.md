@@ -41,14 +41,5 @@ i guess teh schematics doesnt show how to chonnect the battery to the transmitte
 | NRF24L01 power capacitor (10–47 µF) | 1 |
 
 
-## Important Notes
-
-- **NRF24L01:** Requires a stable 3.3V supply. Never connect it directly to 5V.
-- **Power:** Use a suitable regulated supply for the Arduino and steering servo.
-- **Ground:** Connect the Arduino, motor driver, radio module, and power supply grounds appropriately.
-- **Motor driver:** OUT1/OUT2 control Motor A; OUT3/OUT4 control Motor B.
-- **Joystick buttons:** Optional unless button functionality is added to the transmitter code.
-
-
 # END
 that is all thankk you 
