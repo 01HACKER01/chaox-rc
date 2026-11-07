@@ -25,20 +25,21 @@ i guess teh schematics doesnt show how to chonnect the battery to the transmitte
 
 ## BOM
 
-| Component | Quantity |
-|---|---:|
-| Arduino Nano (ATmega328P) | 2 |
-| NRF24L01 adapter with 3.3V regulator | Up to 2 |
-| NRF24L01 wireless module | 2 |
-| XY joystick module | 2 |
-| Suitable voltage regulator | 1 |
-| Power switch | 2 |
-| Breadboard / PCB | 2 |
-| Jumper wires | As needed |
-| L298N dual motor driver module | 1 |
-| Steering servo motor | 1 |
-| 2S LiPo battery (7.4V) | 2 |
-| NRF24L01 power capacitor (10–47 µF) | 1 |
+| Component | Quantity | $ | Alibaba Link |
+|---|---:|---:|---|
+| Arduino Nano (ATmega328P) | 2 | $1–3 | [Buy](https://www.alibaba.com/wholesale/arduino-nano-atmega328p.html) |
+| NRF24L01 adapter with 3.3V regulator | 2 | $0.50–2 | [Search Alibaba](https://www.alibaba.com/trade/search?SearchText=NRF24L01+adapter+3.3V) |
+| NRF24L01 wireless module | 2 | $0.40–1.50 | [Search Alibaba](https://www.alibaba.com/trade/search?SearchText=NRF24L01+wireless+module) |
+| XY joystick module | 2 | $0.50–2 | [Search Alibaba](https://www.alibaba.com/trade/search?SearchText=XY+joystick+module) |
+| Suitable voltage regulator | 1 | $0.50–2 | [Search Alibaba](https://www.alibaba.com/trade/search?SearchText=DC-DC+buck+converter+5V) |
+| Power switch | 2 | $0.10–0.50 | [Search Alibaba](https://www.alibaba.com/trade/search?SearchText=mini+power+switch) |
+| Breadboard / PCB | 2 | $0.50–3 each | [Search Alibaba](https://www.alibaba.com/trade/search?SearchText=prototype+PCB+breadboard) |
+| Jumper wires | As needed | $1–3 per set | [Search Alibaba](https://www.alibaba.com/trade/search?SearchText=jumper+wires+Arduino) |
+| L298N dual motor driver module | 1 | $1–3 | [Search Alibaba](https://www.alibaba.com/trade/search?SearchText=L298N+motor+driver+module) |
+| Steering servo motor | 1 | $2–8 | [Search Alibaba](https://www.alibaba.com/trade/search?SearchText=RC+steering+servo+motor) |
+| 2S LiPo battery (7.4V) | 2 | $5–15 each | [Search Alibaba](https://www.alibaba.com/trade/search?SearchText=7.4V+2S+LiPo+battery) |
+| NRF24L01 power capacitor (10–47 µF) | 1 | $0.05–0.50 | [Search Alibaba](https://www.alibaba.com/trade/search?SearchText=47uF+capacitor) |
+
 
 
 # END
