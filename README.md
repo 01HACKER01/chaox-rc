@@ -2,6 +2,10 @@
 <img width="1156" height="867" alt="image" src="https://github.com/user-attachments/assets/4d1ffc9a-d2b6-4e1d-85b6-dd15b8c4e58c" />
 <img width="1156" height="867" alt="image" src="https://github.com/user-attachments/assets/a64374ee-7eb6-4a8d-8420-a34f3f41f719" />
 <img width="1156" height="867" alt="image" src="https://github.com/user-attachments/assets/dc432096-3fda-453c-b857-d21f04127a2c" />
+transmitter :
+<img width="628" height="391" alt="image" src="https://github.com/user-attachments/assets/7923c9c7-581b-400c-8a0e-307e31391552" />
+receiver :
+<img width="818" height="439" alt="image" src="https://github.com/user-attachments/assets/04ed2f31-166c-4f32-8ec6-7748d451db72" />
 <img width="907" height="780" alt="image" src="https://github.com/user-attachments/assets/f3d172d1-5413-423d-a48a-d57c13c7dd17" />
 <img width="689" height="740" alt="image" src="https://github.com/user-attachments/assets/a826a0ce-eaff-4fac-b1c3-77d71e6348a1" />
 
@@ -17,6 +21,34 @@ u can just add all the comps on teh zero pcb and do the connections shown in teh
 
 ## issues
 i guess teh schematics doesnt show how to chonnect the battery to the transmitter and receiver so u can jut plug teh 7.4v batter to both the receiver and transmitter connect the battery + to the vin of the arduino nano adn battery - to the arduino ground but use the ground wich is used for every ground which we call the comman ground.
+
+
+## BOM
+
+| Component | Quantity |
+|---|---:|
+| Arduino Nano (ATmega328P) | 2 |
+| NRF24L01 adapter with 3.3V regulator | Up to 2 |
+| NRF24L01 wireless module | 2 |
+| XY joystick module | 2 |
+| Suitable voltage regulator | 1 |
+| Power switch | 2 |
+| Breadboard / PCB | 2 |
+| Jumper wires | As needed |
+| L298N dual motor driver module | 1 |
+| Steering servo motor | 1 |
+| 2S LiPo battery (7.4V) | 2 |
+| NRF24L01 power capacitor (10–47 µF) | 1 |
+
+
+## Important Notes
+
+- **NRF24L01:** Requires a stable 3.3V supply. Never connect it directly to 5V.
+- **Power:** Use a suitable regulated supply for the Arduino and steering servo.
+- **Ground:** Connect the Arduino, motor driver, radio module, and power supply grounds appropriately.
+- **Motor driver:** OUT1/OUT2 control Motor A; OUT3/OUT4 control Motor B.
+- **Joystick buttons:** Optional unless button functionality is added to the transmitter code.
+
 
 # END
 that is all thankk you 
